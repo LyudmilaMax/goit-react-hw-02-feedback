@@ -1,34 +1,28 @@
-const Feedback = ({ onLeaveFeedback }) => {
+import { BoxButton, Button } from './FeedbackOptions.styled';
+import PropTypes from 'prop-types';
+
+const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
-    <section>
-      <div>
-        <button
+    <BoxButton>
+      {options.map(option => (
+        <Button
+          key={option}
           type="button"
+          name={option}
           onClick={() => {
-            onLeaveFeedback('good');
+            onLeaveFeedback(option);
           }}
         >
-          Good
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            onLeaveFeedback('neutral');
-          }}
-        >
-          Neutral
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            onLeaveFeedback('bad');
-          }}
-        >
-          Bad
-        </button>
-      </div>
-    </section>
+          {option}
+        </Button>
+      ))}
+    </BoxButton>
   );
 };
 
-export default Feedback;
+FeedbackOptions.propTypes = {
+  onLeaveFeedback: PropTypes.func.isRequired,
+  options: PropTypes.arrayOf(PropTypes.string.isRequired),
+};
+
+export default FeedbackOptions;

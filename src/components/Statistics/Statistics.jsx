@@ -1,23 +1,33 @@
 import Notification from '../Notification/Notification';
+import { BoxStatistics, Item, ItemCount, Message } from './Statistics.styled';
+import PropTypes from 'prop-types';
 
 const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
   return (
-    <section>
-      <div>
-        {!(total === 0) ? (
-          <ul>
-            <li>Good: {good}</li>
-            <li>Neutral: {neutral}</li>
-            <li>Bad: {bad}</li>
-            <li>Total: {total}</li>
-            <li>Positive feedback: {positivePercentage} %</li>
-          </ul>
-        ) : (
-          <Notification />
-        )}
-      </div>
-    </section>
+    <BoxStatistics>
+      {!(total === 0) ? (
+        <>
+          <Item>Good: {good}</Item>
+          <Item>Neutral: {neutral}</Item>
+          <Item>Bad: {bad}</Item>
+          <ItemCount>Total: {total}</ItemCount>
+          <ItemCount>Positive feedback: {positivePercentage} %</ItemCount>
+        </>
+      ) : (
+        <Message>
+          <Notification message="There is no feedback" />
+        </Message>
+      )}
+    </BoxStatistics>
   );
+};
+
+Statistics.propTypes = {
+  good: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  positivePercentage: PropTypes.number.isRequired,
 };
 
 export default Statistics;
