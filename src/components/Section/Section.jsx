@@ -1,7 +1,7 @@
 import { SectionMain, Title } from './Section.styled';
 import PropTypes from 'prop-types';
 
-const Section = ({ title, children }) => {
+export function Section ({ title, children }) {
   return (
     <SectionMain>
       <Title>{title}</Title>
@@ -14,4 +14,4 @@ Section.propTypes = {
   title: PropTypes.string.isRequired,
 };
 
-export default Section;
+

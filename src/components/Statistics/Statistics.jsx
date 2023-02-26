@@ -2,7 +2,7 @@ import Notification from '../Notification/Notification';
 import { BoxStatistics, Item, ItemCount, Message } from './Statistics.styled';
 import PropTypes from 'prop-types';
 
-const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
+export function Statistics ({ good, neutral, bad, total, positivePercentage }) {
   return (
     <BoxStatistics>
       {!(total === 0) ? (
@@ -30,4 +30,4 @@ Statistics.propTypes = {
   positivePercentage: PropTypes.number.isRequired,
 };
 
-export default Statistics;
+
