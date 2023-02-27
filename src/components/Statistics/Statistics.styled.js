@@ -21,9 +21,10 @@ export const ItemCount = styled.p`
 `;
 
 export const Message = styled.p`
+  display: flex;
+  justify-content: center;
   font-size: 18px;
   font-weight: 700;
   margin-top: 20px;
-  margin-left: 60px;
   color: #2a9c00;
 `;
